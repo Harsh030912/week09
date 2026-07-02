@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div id="buttonParent">
+  </div>
+  <script>
+    //This is how we define the state.
+    let state = {  //define the state variable(iska matalb yeh
+    //  hai ki yeh counter keh sath wale number ko indicate karta hai.)
+      count: 0
+    }
+
+    function onButtonPress() { //jab button click hoga toh state ko update kar do +1 seh.
+      state.count = state.count + 1;
+      buttonComponentReRender()
+    }
+
+    function buttonComponentReRender() {  
+      document.getElementById("buttonParent").innerHTML = "";
+      const component = buttonComponent(state.count);
+      document.getElementById("buttonParent").appendChild(component);
+    }
+
+    //This is how we are going to define the components:
+    function buttonComponent(count) { //count basically is the input(1,2,3,4,5....).
+      const button = document.createElement("button"); //create a button tag
+      button.innerHTML = "Counter " + count;//ab uss button tag keh andar yeh rahega (i.e counter + count{let count ka value 1 hai then} =counter1
+      button.setAttribute("onclick", `onButtonPress()`);//14 line wale function(i.e fuction onButtonPress) ko call karo jab button press ho
+      return button;
+    }
+    //This whole component will return 
+    //<button onclick="onButtonPress">Counter 0</button>
+
+    buttonComponentReRender();
+
+  </script>
+</body>
+
+</html>
