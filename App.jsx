@@ -18,3 +18,4 @@ export default function App() {
 function Button(props) {
     return <button onClick={props.onClickHandler}>Counter {count}</button>;
 }
+
